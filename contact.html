@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact | SAVA | AI-Powered Robotics for Manufacturing</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=VT323&family=Roboto+Mono:wght@100;200;300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         @font-face {
@@ -78,14 +79,14 @@
     </nav>
     
     <!-- Contact Form Section -->
-    <section class="h-screen flex items-center justify-center relative">
-        <div class="container mx-auto px-6 relative z-10">
-            <div class="max-w-2xl mx-auto">
+    <section class="flex items-center justify-center relative" style="height: calc(100vh - 80px); margin-top: 80px;">
+        <div class="container mx-auto px-6 relative z-10 flex items-center justify-center">
+            <div class="max-w-2xl w-full">
                 <!-- Contact Form -->
-                <div class="border border-white p-6">
+                <div id="formContainer" class="border border-white p-6">
                     <h2 class="text-3xl font-bold mb-1 tracking-wider">GET IN TOUCH</h2>
                     <p class="font-mono text-white/80 mb-3 text-sm">We'd love to talk with sheet metal manufacturers, industry shop owners, investors, hard-tech companies, and all engineers.</p>
-                    <form id="contactForm">
+                    <form id="contactForm" class="contact-form-container">
                         <div class="grid gap-3">
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
                                 <div>
@@ -103,13 +104,22 @@
                             </div>
                             <div>
                                 <label for="message" class="block font-mono mb-0.5 text-xs">MESSAGE</label>
-                                <textarea id="message" rows="2" class="w-full bg-black border border-white px-3 py-1 text-white focus:outline-none focus:ring-1 focus:ring-white font-mono text-sm" required></textarea>
+                                <textarea id="message" rows="4" class="w-full bg-black border border-white px-3 py-1 text-white focus:outline-none focus:ring-1 focus:ring-white font-mono text-sm" required></textarea>
                             </div>
                             <button type="submit" class="border border-white px-6 py-1.5 font-bold tracking-widest hover:bg-white hover:text-black transition-all text-sm">
                                 SEND MESSAGE
                             </button>
                         </div>
                     </form>
+                </div>
+                
+                <!-- Thank You Message (Hidden by default) -->
+                <div id="thankYouMessage" class="border border-white p-6 hidden flex flex-col items-center">
+                    <h2 class="text-3xl font-bold mb-4 tracking-wider">THANK YOU</h2>
+                    <p class="font-mono text-white/80 mb-6 text-sm">Your message has been successfully sent. We appreciate your interest and will be in touch shortly.</p>
+                    <button onclick="resetForm()" class="border border-white px-6 py-1.5 font-bold tracking-widest hover:bg-white hover:text-black transition-all text-sm">
+                        SEND ANOTHER MESSAGE
+                    </button>
                 </div>
             </div>
         </div>
@@ -123,18 +133,70 @@
     <!-- No footer on contact page to keep it on one screen -->
 
     <script>
+        // Initialize EmailJS with your public key
+        (function() {
+            emailjs.init('CuHBqhEhMpZR-0yjg'); // Replace with your actual EmailJS public key
+        })();
+        
         document.addEventListener('DOMContentLoaded', function() {
             // Form submission
             const contactForm = document.getElementById('contactForm');
+            const formContainer = document.getElementById('formContainer');
+            const thankYouMessage = document.getElementById('thankYouMessage');
+            
             if (contactForm) {
                 contactForm.addEventListener('submit', function(e) {
                     e.preventDefault();
-                    // Here you would typically send the form data to your server
-                    alert('Thank you for your message. We will get back to you soon!');
-                    contactForm.reset();
+                    
+                    // Disable submit button and show loading state
+                    const submitButton = contactForm.querySelector('button[type="submit"]');
+                    const originalButtonText = submitButton.innerHTML;
+                    submitButton.innerHTML = 'SENDING...';
+                    submitButton.disabled = true;
+                    
+                    // Prepare template parameters
+                    const templateParams = {
+                        from_name: document.getElementById('name').value,
+                        from_email: document.getElementById('email').value,
+                        subject: document.getElementById('subject').value,
+                        message: document.getElementById('message').value,
+                        to_email: 'jakob@savarobotics.com'
+                    };
+                    
+                    // Send email using EmailJS
+                    emailjs.send('service_0mvb3tt', 'template_ky7jwit', templateParams) // Replace with your service ID and template ID
+                        .then(function(response) {
+                            console.log('SUCCESS!', response.status, response.text);
+                            
+                            // Hide form and show thank you message
+                            formContainer.classList.add('hidden');
+                            thankYouMessage.classList.remove('hidden');
+                        })
+                        .catch(function(error) {
+                            console.log('FAILED...', error);
+                            alert('Failed to send message. Please try again later.');
+                            
+                            // Reset button state
+                            submitButton.innerHTML = originalButtonText;
+                            submitButton.disabled = false;
+                        });
                 });
             }
         });
+        
+        // Function to reset the form and go back to the contact form view
+        function resetForm() {
+            const contactForm = document.getElementById('contactForm');
+            const formContainer = document.getElementById('formContainer');
+            const thankYouMessage = document.getElementById('thankYouMessage');
+            
+            // Show form and hide thank you message
+            formContainer.classList.remove('hidden');
+            thankYouMessage.classList.add('hidden');
+            
+            // Reset the form fields
+            contactForm.reset();
+        }
     </script>
 </body>
-</html> 
+</html>
