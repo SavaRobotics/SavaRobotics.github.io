@@ -59,9 +59,6 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body class="bg-black text-white font-posterama">
-    <!-- Grid Background -->
-    <div class="fixed inset-0 grid-bg opacity-10 pointer-events-none"></div>
-
     <!-- Noise Overlay -->
     <div class="fixed inset-0 noise-overlay opacity-5 pointer-events-none"></div>
     
@@ -96,8 +93,7 @@
                 <source src="assets/video.mp4" type="video/mp4">
             </video>
             
-            <!-- Grid overlay for aesthetic -->
-            <div class="absolute inset-0 z-20 grid-bg opacity-10"></div>
+            <!-- Noise overlay for aesthetic -->
             <div class="absolute inset-0 z-20 noise-overlay opacity-5"></div>
             
             <!-- Scanline effect -->
@@ -155,6 +151,8 @@
 
         <!-- Background elements -->
         <div class="absolute inset-0 z-0">
+            <!-- Grid Background -->
+            <div class="absolute inset-0 grid-bg opacity-10 pointer-events-none"></div>
             <!-- Abstract geometric shapes for visual interest -->
             <div class="absolute top-40 left-20 w-60 h-60 border border-black/20 rounded-full"></div>
             <div class="absolute bottom-40 right-40 w-80 h-80 border border-black/20 transform rotate-12 rounded-sm"></div>
@@ -324,8 +322,6 @@
                             </video>
                             <!-- Overlay for video -->
                             <div class="absolute inset-0 bg-black/30"></div>
-                            <!-- Grid overlay -->
-                            <div class="absolute inset-0 grid-bg opacity-10"></div>
                             <!-- Scanline effect -->
                             <div class="absolute inset-0 scanline-effect opacity-20"></div>
                         </div>
@@ -335,8 +331,9 @@
         </div>
         
         <!-- Background elements -->
-        <div class="absolute inset-0 z-0 overflow-hidden">
-            <div class="wireframe-grid"></div>
+        <div class="absolute inset-0 z-0">
+            <!-- Grid Background -->
+            <div class="absolute inset-0 grid-bg opacity-10 pointer-events-none"></div>
         </div>
     </section>
 
