@@ -67,50 +67,28 @@
     
     <!-- Navigation Bar (no background color now) -->
     <nav id="navbar" class="fixed top-0 left-0 w-full z-50 py-4 px-6">
-        <div class="container mx-auto grid grid-cols-3 items-center">
-            <!-- Logo -->
-            <a href="#" class="flex items-center text-white col-span-1">
+        <div class="container mx-auto flex justify-center md:grid md:grid-cols-3 items-center">
+            <!-- Logo (centered on mobile, left-aligned on desktop) -->
+            <a href="#" class="flex items-center text-white md:col-span-1">
                 <span class="text-2xl font-posterama tracking-widest">SAVA</span>
             </a>
             
             <!-- Desktop Navigation Links -->
-            <div class="hidden md:flex space-x-8 items-center justify-center col-span-1">
+            <div class="hidden md:flex space-x-8 items-center justify-center md:col-span-1">
                 <a href="#what-we-build" class="nav-link text-white font-mono text-sm tracking-widest hover:text-white/70 transition-all">HOME</a>
-                
+                <a href="#vision" class="nav-link text-white font-mono text-sm tracking-widest hover:text-white/70 transition-all">VISION</a>
                 <a href="#problem" class="nav-link text-white font-mono text-sm tracking-widest hover:text-white/70 transition-all">PROBLEM</a>
                 <a href="#solution" class="nav-link text-white font-mono text-sm tracking-widest hover:text-white/70 transition-all">SOLUTION</a>
                 <a href="contact.html" class="nav-link text-white font-mono text-sm tracking-widest hover:text-white/70 transition-all">CONTACT</a>
             </div>
             
-            <!-- Mobile Menu Button -->
-            <div class="col-span-1 flex justify-end">
-                <button id="menu-toggle" class="md:hidden border-2 border-white p-2 focus:outline-none rounded-sm">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
-                    </svg>
-                </button>
-            </div>
-            
-            <!-- Mobile Navigation Menu (Hidden by default) -->
-            <div id="mobile-menu" class="fixed inset-0 bg-black/95 z-50 hidden flex-col items-center justify-center">
-                <button id="close-menu" class="absolute top-6 right-6 border-2 border-white p-2 rounded-sm">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
-                    </svg>
-                </button>
-                <div class="flex flex-col space-y-8 items-center">
-                    <a href="#what-we-build" class="mobile-nav-link text-white font-mono text-xl tracking-widest">HOME</a>
-                    <a href="#team" class="mobile-nav-link text-white font-mono text-xl tracking-widest">TEAM</a>
-                    <a href="#problem" class="mobile-nav-link text-white font-mono text-xl tracking-widest">PROBLEM</a>
-                    <a href="#solution" class="mobile-nav-link text-white font-mono text-xl tracking-widest">SOLUTION</a>
-                    <a href="contact.html" class="mobile-nav-link text-white font-mono text-xl tracking-widest">CONTACT</a>
-                </div>
-            </div>
+            <!-- Empty column for desktop grid layout -->
+            <div class="hidden md:block md:col-span-1"></div>
         </div>
     </nav>
 
     <!-- Hero Section with Video Background that extends under navbar -->
-    <section id="what-we-build" class="relative overflow-hidden min-h-screen border-b border-white/20">
+    <section id="what-we-build" class="relative overflow-hidden border-b border-white/20" style="height: calc(100vh - 72px);">
         <!-- Full width video background -->
         <div class="absolute inset-0 z-0">
             <div class="absolute inset-0 bg-black/60 z-10"></div> <!-- Overlay to darken video -->
@@ -131,7 +109,7 @@
         
         <!-- Centered content -->
         <div class="container relative z-30 mx-auto h-full flex items-center justify-center px-6">
-            <div class="text-center max-w-4xl mt-16">
+            <div class="text-center max-w-4xl">
                 <div class="flex items-center justify-center mb-8">
                     <img src="assets/white_yc_logo.svg" alt="Y Combinator Logo" class="h-6 mr-3">
                     <p class="text-s font-mono uppercase tracking-widest">BACKED BY Y COMBINATOR</p>
@@ -162,6 +140,27 @@
         <div class="absolute bottom-8 right-8 w-16 h-16 z-30 border-b-2 border-r-2 border-white/50 pointer-events-none rounded-br-sm"></div>
     </section>
 
+    <!-- Vision Section -->
+    <section id="vision" class="py-20 relative overflow-hidden border-b border-black/20">
+        <div class="container mx-auto px-6 relative z-10">
+            <div class="text-center mb-16">
+                <div class="inline-block px-2 py-1 text-xs font-mono tracking-widest mb-4">OUR VISION</div>
+                <div class="h-0.5 mx-auto bg-black mb-4 vision-line"></div>
+                <h2 class="text-4xl font-bold mb-4 tracking-wider vision-heading">THE NEXT MANUFACTURING WORKFORCE</h2>
+                <div class="h-0.5 mx-auto bg-black mb-8 vision-line"></div>
+                <p class="text-xl italic text-center">"We envision a world where American manufacturing is fully automated, where humans are liberated from tedious labor to focus on creativity, humanity, and exploration."</p>
+                <p class="text-center mt-4 font-bold">— SAVA Leadership Team</p>
+            </div>
+        </div>
+
+        <!-- Background elements -->
+        <div class="absolute inset-0 z-0">
+            <!-- Abstract geometric shapes for visual interest -->
+            <div class="absolute top-40 left-20 w-60 h-60 border border-black/20 rounded-full"></div>
+            <div class="absolute bottom-40 right-40 w-80 h-80 border border-black/20 transform rotate-12 rounded-sm"></div>
+        </div>
+    </section>
+
     <!-- Add this JavaScript to handle video fallback -->
     <script>
         // Show fallback image if video fails to load
@@ -174,19 +173,18 @@
     <section id="problem" class="py-20 relative overflow-hidden border-b border-black/20">
         <div class="container mx-auto px-6 relative z-10">
             <div class="text-center mb-16">
-                <div class="inline-block border-b-2 border-black px-2 py-1 text-xs font-mono tracking-widest mb-4">INDUSTRY CHALLENGES</div>
-                <h2 class="text-4xl font-bold mb-4 tracking-wider">SOLVING MANUFACTURING PROBLEMS</h2>
-                <div class="h-1 w-24 bg-black mx-auto mb-8"></div>
+                <div class="inline-block px-2 py-1 text-xs font-mono tracking-widest mb-4">THE PROBLEM</div>
+                <div class="h-0.5 mx-auto bg-black mb-4 problem-line"></div>
+                <h2 class="text-4xl font-bold mb-4 tracking-wider problem-heading">INFLEXIBLE AUTOMATION</h2>
+                <div class="h-0.5 mx-auto bg-black mb-8 problem-line"></div>
             </div>
 
-            <div class="max-w-5xl mx-auto">
-                <!-- Problem 1 -->
-                <div class="border-2 border-black p-8 mb-8 bg-transparent relative rounded-sm">
-                    <div class="absolute -top-4 -left-4 text-5xl">"</div>
-                    <div class="mb-6 ml-6">
+            <div class="max-w-5xl mx-auto grid md:grid-cols-2 gap-8">
+                <!-- Testimonial 1 -->
+                <div class="border-2 border-black p-8 bg-transparent rounded-2xl">
+                    <div class="mb-6">
                         <p class="text-lg italic mb-6">SAVA's AI perception technology solved problems we thought were impossible. Their robots adapt to changes in real-time without any reprogramming, cutting our production setup time by 80%.</p>
                         <div class="flex items-center">
-                            <div class="w-12 h-12 bg-gray-200 border-2 border-black rounded-full mr-4"></div>
                             <div>
                                 <p class="font-bold">Sarah Johnson</p>
                                 <p class="text-sm font-mono">CTO, Advanced Electronics Manufacturing</p>
@@ -195,31 +193,14 @@
                     </div>
                 </div>
 
-                <!-- Problem 2 -->
-                <div class="border-2 border-black p-8 mb-8 bg-transparent relative rounded-sm">
-                    <div class="absolute -top-4 -left-4 text-5xl">"</div>
-                    <div class="mb-6 ml-6">
+                <!-- Testimonial 2 -->
+                <div class="border-2 border-black p-8 bg-transparent rounded-2xl">
+                    <div class="mb-6">
                         <p class="text-lg italic mb-6">The aerospace-grade precision combined with adaptive intelligence is groundbreaking. We're achieving tolerances we never thought possible with traditional automation.</p>
                         <div class="flex items-center">
-                            <div class="w-12 h-12 bg-gray-200 border-2 border-black rounded-full mr-4"></div>
                             <div>
                                 <p class="font-bold">Marcus Chen</p>
                                 <p class="text-sm font-mono">VP of Operations, Precision Aerospace</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Problem 3 -->
-                <div class="border-2 border-black p-8 mb-8 bg-transparent relative rounded-sm">
-                    <div class="absolute -top-4 -left-4 text-5xl">"</div>
-                    <div class="mb-6 ml-6">
-                        <p class="text-lg italic mb-6">We implemented SAVA's solution in just 3 weeks with zero downtime or specialized hires. Their AI perception technology has reduced errors by 95% and increased throughput by 40%.</p>
-                        <div class="flex items-center">
-                            <div class="w-12 h-12 bg-gray-200 border-2 border-black rounded-full mr-4"></div>
-                            <div>
-                                <p class="font-bold">Alisha Rodriguez</p>
-                                <p class="text-sm font-mono">Director of Innovation, Global Auto Parts</p>
                             </div>
                         </div>
                     </div>
@@ -238,51 +219,109 @@
     <!-- 4. Why Our Solution Section -->
     <section id="solution" class="py-20 relative overflow-hidden border-b border-white/20">
         <div class="container mx-auto px-6 relative z-10">
-            <div class="grid md:grid-cols-2 gap-16 items-center">
-                <div>
-                    <div class="inline-block border-b-2 border-white px-2 py-1 text-xs font-mono tracking-widest mb-4">OUR SOLUTION</div>
-                    <h2 class="text-4xl font-bold mb-4 tracking-wider">STATE-OF-THE-ART AI PERCEPTION</h2>
-                    <div class="h-1 w-24 bg-white mb-8"></div>
-                    <p class="text-base font-mono mb-8">AI perception that sees, learns, and adapts in real-time<span class="inline-block animate-blink">|</span></p>
-                    
-                    <div class="space-y-6 mb-8">
-                        <div class="border border-white p-6 rounded-sm">
-                            <h3 class="text-xl font-bold mb-3">ADAPTIVE INTELLIGENCE</h3>
-                            <p class="font-mono leading-relaxed">Our AI lets robots see and adapt to their environment instantly. No reprogramming needed.</p>
-                        </div>
-                        
-                        <div class="border border-white p-6 rounded-sm">
-                            <h3 class="text-xl font-bold mb-3">UNCOMPROMISING PRECISION</h3>
-                            <p class="font-mono leading-relaxed">Finally, both flexibility and precision. Our AI delivers aerospace-grade accuracy in changing environments.</p>
-                        </div>
-                        
-                        <div class="border border-white p-6 rounded-sm">
-                            <h3 class="text-xl font-bold mb-3">SEAMLESS INTEGRATION</h3>
-                            <p class="font-mono leading-relaxed">70% faster deployment. Zero specialized staff. Minimal disruption to your existing workflows.</p>
-                        </div>
+            <!-- Section title -->
+            <div class="mb-16 text-center">
+                <div class="inline-block px-2 py-1 text-xs font-mono tracking-widest mb-4">OUR SOLUTION</div>
+                <div class="h-0.5 mx-auto bg-black mb-4 solution-line"></div>
+                <h2 class="text-4xl font-bold mb-4 tracking-wider solution-heading">ZERO-PROGRAMMING AUTOMATION</h2>
+                <div class="h-0.5 mx-auto bg-black mb-8 solution-line"></div>
+                <p class="text-base font-mono mb-8">Simply provide the CAD & quantity — the robot does the rest<span class="inline-block animate-blink">|</span></p>
+            </div>
+            
+            <!-- Content grid -->
+            <div class="grid md:grid-cols-2 gap-16 items-start">
+                <!-- Left column with feature boxes -->
+                <div class="space-y-6">
+                    <div class="border border-white p-6 rounded-sm">
+                        <h3 class="text-xl font-bold mb-3">FULLY AUTONOMOUS SETUP</h3>
+                        <p class="font-mono leading-relaxed">No programming required. Our robots autonomously detect blanks, create their own instructions, and operate the machine with zero human intervention.</p>
                     </div>
                     
-                    <button class="border border-white text-white px-8 py-3 font-bold tracking-widest hover:bg-white hover:text-black transition-all rounded-sm">
-                        LEARN HOW IT WORKS
-                    </button>
+                    <div class="border border-white p-6 rounded-sm">
+                        <h3 class="text-xl font-bold mb-3">INSTANT DEPLOYMENT</h3>
+                        <p class="font-mono leading-relaxed">Simply position the robot in front of your machine — no integration, no connections needed. It adapts to both the environment and the machine itself. Rapidly redeploy from one machine to another in minutes.</p>
+                    </div>
+                    
+                    <div class="border border-white p-6 rounded-sm">
+                        <h3 class="text-xl font-bold mb-3">24/7 LIGHTS-OUT MANUFACTURING</h3>
+                        <p class="font-mono leading-relaxed">Achieve true lights-out production with robots that run continuously, allowing for low-volume, high-mix production with unprecedented ROI.</p>
+                    </div>
+                    
                 </div>
+                
+                <!-- Right column with workflow visualization -->
                 <div>
-                    <!-- Technical diagram -->
-                    <div class="border-2 border-white bg-black p-4 relative rounded-sm">
-                        <img src="https://static.vecteezy.com/system/resources/previews/011/994/022/original/robot-arm-wireframe-style-industrial-robotic-arm-in-hologram-3d-wireframe-style-ai-generative-image-free-png.png" alt="Robot Technical Diagram" class="invert brightness-200 contrast-200">
-                        
-                        <!-- Corner brackets -->
-                        <div class="absolute top-0 left-0 w-4 h-4 border-t-2 border-l-2 border-white rounded-tl-sm"></div>
-                        <div class="absolute top-0 right-0 w-4 h-4 border-t-2 border-r-2 border-white rounded-tr-sm"></div>
-                        <div class="absolute bottom-0 left-0 w-4 h-4 border-b-2 border-l-2 border-white rounded-bl-sm"></div>
-                        <div class="absolute bottom-0 right-0 w-4 h-4 border-b-2 border-r-2 border-white rounded-br-sm"></div>
-                        
-                        <!-- Technical annotations -->
-                        <div class="absolute top-1/4 left-1/4 w-24 border-t border-white/50">
-                            <p class="text-xs font-mono mt-1">AI PERCEPTION</p>
+                    <div class="border border-white p-6 rounded-sm relative">
+                        <!-- Horizontal workflow at the top -->
+                        <div class="flex justify-between items-center mb-8">
+                            <!-- Intelligent Perception -->
+                            <div class="text-center">
+                                <div class="w-12 h-12 mx-auto border-2 border-white rounded-full flex items-center justify-center mb-2">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                                    </svg>
+                                </div>
+                                <h3 class="text-sm font-bold">PERCEPTION</h3>
+                            </div>
+
+                            <!-- Right arrow -->
+                            <div class="w-10 border-t-2 border-white"></div>
+                            
+                            <!-- Adaptive Control -->
+                            <div class="text-center">
+                                <div class="w-12 h-12 mx-auto border-2 border-white rounded-full flex items-center justify-center mb-2">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                                    </svg>
+                                </div>
+                                <h3 class="text-sm font-bold">CONTROL</h3>
+                            </div>
+
+                            <!-- Right arrow -->
+                            <div class="w-10 border-t-2 border-white"></div>
+                            
+                            <!-- Precise Hardware -->
+                            <div class="text-center">
+                                <div class="w-12 h-12 mx-auto border-2 border-white rounded-full flex items-center justify-center mb-2">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                        <!-- Base -->
+                                        <rect x="3" y="17" width="8" height="4" />
+                                        <!-- Arm joint 1 -->
+                                        <circle cx="7" cy="17" r="1" />
+                                        <!-- Arm segment 1 -->
+                                        <line x1="7" y1="17" x2="7" y2="12" />
+                                        <!-- Arm joint 2 -->
+                                        <circle cx="7" cy="12" r="1" />
+                                        <!-- Arm segment 2 -->
+                                        <line x1="7" y1="12" x2="12" y2="9" />
+                                        <!-- Arm joint 3 -->
+                                        <circle cx="12" cy="9" r="1" />
+                                        <!-- Arm segment 3 -->
+                                        <line x1="12" y1="9" x2="17" y2="9" />
+                                        <!-- Gripper joint -->
+                                        <circle cx="17" cy="9" r="1" />
+                                        <!-- Gripper fingers -->
+                                        <line x1="17" y1="9" x2="19" y2="7" />
+                                        <line x1="17" y1="9" x2="19" y2="11" />
+                                    </svg>
+                                </div>
+                                <h3 class="text-sm font-bold">HARDWARE</h3>
+                            </div>
                         </div>
-                        <div class="absolute bottom-1/3 right-1/4 w-24 border-t border-white/50">
-                            <p class="text-xs font-mono mt-1">ADAPTIVE CONTROL</p>
+                        
+                        <!-- Video container taking up the rest of the space -->
+                        <div class="relative w-full overflow-hidden rounded-sm border border-white/30" style="height: 320px;">
+                            <video class="absolute w-full h-full object-cover" autoplay loop muted playsinline>
+                                <source src="assets/video.mp4" type="video/mp4">
+                            </video>
+                            <!-- Overlay for video -->
+                            <div class="absolute inset-0 bg-black/30"></div>
+                            <!-- Grid overlay -->
+                            <div class="absolute inset-0 grid-bg opacity-10"></div>
+                            <!-- Scanline effect -->
+                            <div class="absolute inset-0 scanline-effect opacity-20"></div>
                         </div>
                     </div>
                 </div>
@@ -305,19 +344,19 @@
                     </div>
                     <p class="font-mono text-white/70 mb-6">AI-POWERED ROBOTICS FOR MANUFACTURING</p>
                     <div class="flex space-x-4">
-                        <a href="https://www.linkedin.com/company/sava-robotics" class="border border-white/50 w-10 h-10 flex items-center justify-center hover:bg-white hover:text-black transition-all rounded-sm">
+                        <a href="https://www.linkedin.com/company/savarobotics" target="_blank" rel="noopener noreferrer" class="border border-white/50 w-10 h-10 flex items-center justify-center hover:bg-white hover:text-black transition-all rounded-sm">
                             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M16 8C17.5913 8 19.1174 8.63214 20.2426 9.75736C21.3679 10.8826 22 12.4087 22 14V21H18V14C18 13.4696 17.7893 12.9609 17.4142 12.5858C17.0391 12.2107 16.5304 12 16 12C15.4696 12 14.9609 12.2107 14.5858 12.5858C14.2107 12.9609 14 13.4696 14 14V21H10V14C10 12.4087 10.6321 10.8826 11.7574 9.75736C12.8826 8.63214 14.4087 8 16 8Z" stroke="currentColor" stroke-width="2"/>
                                 <path d="M6 9H2V21H6V9Z" stroke="currentColor" stroke-width="2"/>
                                 <circle cx="4" cy="4" r="2" stroke="currentColor" stroke-width="2"/>
                             </svg>
                         </a>
-                        <a href="https://twitter.com/savarobotics" class="border border-white/50 w-10 h-10 flex items-center justify-center hover:bg-white hover:text-black transition-all rounded-sm">
+                        <a href="https://x.com/savarobotics" target="_blank" rel="noopener noreferrer" class="border border-white/50 w-10 h-10 flex items-center justify-center hover:bg-white hover:text-black transition-all rounded-sm">
                             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M22 4C22 4 21.3 6.1 20 7.4C21.6 17.4 10.6 24.7 2 19C4.2 19.1 6.4 18.4 8 17C3 15.5 0.5 9.6 3 5C5.2 7.6 8.6 9.1 12 9C11.1 4.8 16 2.4 19 5.2C20.1 5.2 22 4 22 4Z" stroke="currentColor" stroke-width="2"/>
                             </svg>
                         </a>
-                        <a href="https://github.com/SavaRobotics" class="border border-white/50 w-10 h-10 flex items-center justify-center hover:bg-white hover:text-black transition-all rounded-sm">
+                        <a href="https://github.com/SavaRobotics" target="_blank" rel="noopener noreferrer" class="border border-white/50 w-10 h-10 flex items-center justify-center hover:bg-white hover:text-black transition-all rounded-sm">
                             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.475 2 2 6.475 2 12C2 16.425 4.8625 20.1625 8.8375 21.4875C9.3375 21.575 9.525 21.275 9.525 21.0125C9.525 20.775 9.5125 19.9875 9.5125 19.15C7 19.6125 6.35 18.5375 6.15 17.975C6.0375 17.6875 5.55 16.8 5.125 16.5625C4.775 16.375 4.275 15.9125 5.1125 15.9C5.9 15.8875 6.4625 16.625 6.65 16.925C7.55 18.4375 8.9875 18.0125 9.5625 17.75C9.65 17.1 9.9125 16.6625 10.2 16.4125C7.975 16.1625 5.65 15.3 5.65 11.475C5.65 10.3875 6.0375 9.4875 6.675 8.7875C6.575 8.5375 6.225 7.5125 6.775 6.1375C6.775 6.1375 7.6125 5.875 9.525 7.1625C10.325 6.9375 11.175 6.825 12.025 6.825C12.875 6.825 13.725 6.9375 14.525 7.1625C16.4375 5.8625 17.275 6.1375 17.275 6.1375C17.825 7.5125 17.475 8.5375 17.375 8.7875C18.0125 9.4875 18.4 10.375 18.4 11.475C18.4 15.3125 16.0625 16.1625 13.8375 16.4125C14.2 16.725 14.5125 17.325 14.5125 18.2625C14.5125 19.6 14.5 20.675 14.5 21.0125C14.5 21.275 14.6875 21.5875 15.1875 21.4875C19.1375 20.1625 22 16.4125 22 12C22 6.475 17.525 2 12 2Z" fill="currentColor"/>
                             </svg>
@@ -357,29 +396,6 @@
         
         // Navbar functionality
         document.addEventListener('DOMContentLoaded', function() {
-            // Mobile menu toggle
-            const menuToggle = document.getElementById('menu-toggle');
-            const mobileMenu = document.getElementById('mobile-menu');
-            const closeMenu = document.getElementById('close-menu');
-            const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
-            
-            menuToggle.addEventListener('click', function() {
-                mobileMenu.classList.remove('hidden');
-                mobileMenu.classList.add('flex');
-            });
-            
-            closeMenu.addEventListener('click', function() {
-                mobileMenu.classList.remove('flex');
-                mobileMenu.classList.add('hidden');
-            });
-            
-            mobileNavLinks.forEach(link => {
-                link.addEventListener('click', function() {
-                    mobileMenu.classList.remove('flex');
-                    mobileMenu.classList.add('hidden');
-                });
-            });
-            
             // Change navbar style on scroll
             const navbar = document.getElementById('navbar');
             window.addEventListener('scroll', function() {
@@ -419,6 +435,37 @@
                     }
                 });
             });
+
+            // Set line widths based on heading widths
+            function adjustLineWidths() {
+                // Vision section
+                const visionHeading = document.querySelector('.vision-heading');
+                const visionLines = document.querySelectorAll('.vision-line');
+                const visionWidth = visionHeading.offsetWidth;
+                visionLines.forEach(line => {
+                    line.style.width = `${visionWidth}px`;
+                });
+
+                // Problem section
+                const problemHeading = document.querySelector('.problem-heading');
+                const problemLines = document.querySelectorAll('.problem-line');
+                const problemWidth = problemHeading.offsetWidth;
+                problemLines.forEach(line => {
+                    line.style.width = `${problemWidth}px`;
+                });
+
+                // Solution section
+                const solutionHeading = document.querySelector('.solution-heading');
+                const solutionLines = document.querySelectorAll('.solution-line');
+                const solutionWidth = solutionHeading.offsetWidth;
+                solutionLines.forEach(line => {
+                    line.style.width = `${solutionWidth}px`;
+                });
+            }
+
+            // Adjust on page load and resize
+            adjustLineWidths();
+            window.addEventListener('resize', adjustLineWidths);
         });
     </script>
 </body>
