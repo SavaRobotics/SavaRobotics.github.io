@@ -89,9 +89,10 @@
         <!-- Full width video background -->
         <div class="absolute inset-0 z-0">
             <div class="absolute inset-0 bg-black/60 z-10"></div> <!-- Overlay to darken video -->
-            <video class="absolute w-full h-full object-cover" autoplay loop muted playsinline preload="auto" poster="assets/video-poster.jpg">
+            <video class="absolute w-full h-full object-cover" autoplay loop muted playsinline preload="auto">
                 <source src="assets/video.mp4" type="video/mp4">
                 <source src="assets/video.webm" type="video/webm">
+                Your browser does not support the video tag.
             </video>
             
             <!-- Noise overlay for aesthetic -->
@@ -246,9 +247,10 @@
                         
                         <!-- Video container taking up the rest of the space -->
                         <div class="relative w-full overflow-hidden rounded-sm border border-white/30" style="height: 480px;">
-                            <video id="solutionVideo" class="absolute w-full h-full object-cover" autoplay muted playsinline preload="auto" poster="assets/howitworks-poster.jpg">
+                            <video id="solutionVideo" class="absolute w-full h-full object-cover" autoplay muted playsinline preload="auto" loop>
                                 <source src="assets/howitworks.mp4" type="video/mp4">
                                 <source src="assets/howitworks.webm" type="video/webm">
+                                Your browser does not support the video tag.
                             </video>
                             <!-- Scanline effect -->
                             <div class="absolute inset-0 scanline-effect opacity-20"></div>
@@ -329,25 +331,19 @@
         // Custom video control for the solution video
         document.addEventListener('DOMContentLoaded', function() {
             const solutionVideo = document.getElementById('solutionVideo');
-            let pauseTimeout;
             
-            // Set up ended listener to handle pause before loop
-            solutionVideo.addEventListener('ended', function() {
-                // Pause at the end
-                solutionVideo.pause();
-                
-                // Clear any existing timeout
-                if (pauseTimeout) clearTimeout(pauseTimeout);
-                
-                // Wait 4 seconds then restart
-                pauseTimeout = setTimeout(function() {
-                    solutionVideo.currentTime = 0;
-                    solutionVideo.play();
-                }, 4000);
+            // Add error handling for video loading
+            solutionVideo.addEventListener('error', function(e) {
+                console.error('Video error:', e);
+                // Try to reload the video
+                solutionVideo.load();
             });
             
-            // Start playing the video
-            solutionVideo.play();
+            // Ensure video plays
+            solutionVideo.play().catch(function(error) {
+                console.log('Autoplay prevented:', error);
+                // Add play button or other fallback here if needed
+            });
         });
         
         // Navbar functionality
