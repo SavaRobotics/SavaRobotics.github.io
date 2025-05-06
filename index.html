@@ -246,14 +246,16 @@
                         <!--<h3 class="text-xl font-bold mb-8 text-center">HOW IT WORKS</h3>-->
                         
                         <!-- Video container taking up the rest of the space -->
-                        <div class="relative w-full overflow-hidden rounded-sm border border-white/30" style="height: 480px;">
-                            <video class="absolute w-full h-full object-cover" autoplay loop muted playsinline preload="auto">
-                                <source src="assets/howitworks.mp4" type="video/mp4">
-                                <source src="assets/howitworks.webm" type="video/webm">
-                                Your browser does not support the video tag.
-                            </video>
-                            <!-- Scanline effect -->
-                            <div class="absolute inset-0 scanline-effect opacity-20"></div>
+                        <div class="relative w-full overflow-hidden rounded-sm border border-white/30">
+                            <div class="aspect-video">
+                                <video class="absolute w-full h-full object-cover" autoplay loop muted playsinline preload="auto">
+                                    <source src="assets/howitworks.mp4" type="video/mp4">
+                                    <source src="assets/howitworks.webm" type="video/webm">
+                                    Your browser does not support the video tag.
+                                </video>
+                                <!-- Scanline effect -->
+                                <div class="absolute inset-0 scanline-effect opacity-20"></div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -524,4 +526,3 @@
     </script>
 </body>
 </html>
-`
