@@ -143,7 +143,7 @@
             <div class="text-center mb-16">
                 <div class="inline-block px-2 py-1 text-xs font-mono tracking-widest mb-4">OUR VISION</div>
                 <div class="h-0.5 mx-auto bg-black mb-4 vision-line"></div>
-                <h2 class="text-4xl font-bold mb-4 tracking-wider vision-heading">THE NEXT MANUFACTURING WORKFORCE</h2>
+                <h2 class="text-3xl md:text-4xl font-bold mb-4 tracking-wider vision-heading px-2">THE NEXT MANUFACTURING WORKFORCE</h2>
                 <div class="h-0.5 mx-auto bg-black mb-8 vision-line"></div>
                 <div class="max-w-5xl mx-auto">
                     <p class="text-xl italic text-center font-mono">"We envision a world where American manufacturing is fully automated, where humans are liberated from tedious labor to focus on creativity, humanity, and exploration."</p>
@@ -176,7 +176,7 @@
             <div class="text-center mb-16">
                 <div class="inline-block px-2 py-1 text-xs font-mono tracking-widest mb-4">THE PROBLEM</div>
                 <div class="h-0.5 mx-auto bg-black mb-4 problem-line"></div>
-                <h2 class="text-4xl font-bold mb-4 tracking-wider problem-heading">NO ONE (OR THING) TO OPERATE PRESS BRAKES</h2>
+                <h2 class="text-3xl md:text-4xl font-bold mb-4 tracking-wider problem-heading px-2">NO ONE (OR THING) TO OPERATE PRESS BRAKES</h2>
                 <div class="h-0.5 mx-auto bg-black mb-8 problem-line"></div>
             </div>
 
@@ -232,9 +232,9 @@
             <div class="text-center mb-16">
                 <div class="inline-block px-2 py-1 text-xs font-mono tracking-widest mb-4">OUR SOLUTION</div>
                 <div class="h-0.5 mx-auto bg-black mb-4 solution-line"></div>
-                <h2 class="text-4xl font-bold mb-4 tracking-wider solution-heading">INTELLIGENT MANUFACTURING ROBOTS</h2>
+                <h2 class="text-3xl md:text-4xl font-bold mb-4 tracking-wider solution-heading px-2">INTELLIGENT MANUFACTURING ROBOTS</h2>
                 <div class="h-0.5 mx-auto bg-black mb-8 solution-line"></div>
-                <p class="text-base font-mono mb-8">Simply provide the CAD & quantity — the robot does the rest<span class="inline-block animate-blink">|</span></p>
+                <p class="text-base font-mono mb-8 px-4">Simply provide the CAD & quantity — the robot does the rest<span class="inline-block animate-blink">|</span></p>
             </div>
             
             <!-- Content grid -->
@@ -276,6 +276,9 @@
                         <span class="text-2xl font-posterama tracking-widest">SAVA</span>
                     </div>
                     <p class="font-mono text-white/70 mb-6">INTELLIGENT MANUFACTURING ROBOTS</p>
+                    <p class="font-mono text-white/70 mb-6">
+                        <a href="mailto:founders@savarobotics.com" class="hover:text-white transition-colors">founders@savarobotics.com</a>
+                    </p>
                     <div class="flex space-x-4">
                         <a href="https://www.linkedin.com/company/savarobotics" target="_blank" rel="noopener noreferrer" class="border border-white/50 w-10 h-10 flex items-center justify-center hover:bg-white hover:text-black transition-all rounded-sm">
                             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -300,9 +303,10 @@
                 
                 <div>
                     <h3 class="text-base mb-4 tracking-wider">SUBSCRIBE FOR UPDATES</h3>
-                    <form class="flex">
-                        <input type="email" placeholder="Your email address" class="bg-black border border-white/50 px-4 py-2 w-full focus:outline-none focus:ring-2 focus:border-white text-white font-mono rounded-l-sm">
-                        <button class="bg-white text-black px-4 py-2 font-bold hover:bg-gray-200 transition-all rounded-r-sm">
+                    <!-- Replace "yourformid" with your actual form ID after creating one at https://formspree.io -->
+                    <form class="flex" action="https://formspree.io/f/yourformid" method="POST">
+                        <input type="email" name="email" placeholder="Your email address" class="bg-black border border-white/50 px-4 py-2 w-full focus:outline-none focus:ring-2 focus:border-white text-white font-mono rounded-l-sm" required>
+                        <button type="submit" class="bg-white text-black px-4 py-2 font-bold hover:bg-gray-200 transition-all rounded-r-sm">
                             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M14 5L21 12M21 12L14 19M21 12H3" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                             </svg>
@@ -372,10 +376,14 @@
 
             // Set line widths based on heading widths
             function adjustLineWidths() {
+                // Get viewport width
+                const viewportWidth = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0);
+                const maxWidth = viewportWidth - 40; // Add some padding
+                
                 // Vision section
                 const visionHeading = document.querySelector('.vision-heading');
                 const visionLines = document.querySelectorAll('.vision-line');
-                const visionWidth = visionHeading.offsetWidth;
+                const visionWidth = Math.min(visionHeading.offsetWidth, maxWidth);
                 visionLines.forEach(line => {
                     line.style.width = `${visionWidth}px`;
                 });
@@ -383,7 +391,7 @@
                 // Problem section
                 const problemHeading = document.querySelector('.problem-heading');
                 const problemLines = document.querySelectorAll('.problem-line');
-                const problemWidth = problemHeading.offsetWidth;
+                const problemWidth = Math.min(problemHeading.offsetWidth, maxWidth);
                 problemLines.forEach(line => {
                     line.style.width = `${problemWidth}px`;
                 });
@@ -391,7 +399,7 @@
                 // Solution section
                 const solutionHeading = document.querySelector('.solution-heading');
                 const solutionLines = document.querySelectorAll('.solution-line');
-                const solutionWidth = solutionHeading.offsetWidth;
+                const solutionWidth = Math.min(solutionHeading.offsetWidth, maxWidth);
                 solutionLines.forEach(line => {
                     line.style.width = `${solutionWidth}px`;
                 });
@@ -468,6 +476,49 @@
                 if (mobileSources.length > 0) {
                     video.load();
                 }
+            }
+        });
+
+        // Handle newsletter form submission
+        document.addEventListener('DOMContentLoaded', function() {
+            const newsletterForm = document.querySelector('form[action^="https://formspree.io"]');
+            if (newsletterForm) {
+                newsletterForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    const formData = new FormData(newsletterForm);
+                    const formUrl = newsletterForm.getAttribute('action');
+                    
+                    // Change button to loading state
+                    const submitButton = newsletterForm.querySelector('button[type="submit"]');
+                    const originalButtonContent = submitButton.innerHTML;
+                    submitButton.innerHTML = `<div class="w-4 h-4 border-2 border-black border-t-transparent rounded-full animate-spin"></div>`;
+                    
+                    fetch(formUrl, {
+                        method: 'POST',
+                        body: formData,
+                        headers: {
+                            'Accept': 'application/json'
+                        }
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        // Success
+                        newsletterForm.innerHTML = `<div class="bg-white/10 border border-white/20 w-full p-4 text-white font-mono">Thanks for subscribing!</div>`;
+                    })
+                    .catch(error => {
+                        // Error
+                        submitButton.innerHTML = originalButtonContent;
+                        const errorEl = document.createElement('div');
+                        errorEl.className = 'bg-red-500/20 border border-red-500/30 w-full p-2 text-white font-mono text-sm mt-2';
+                        errorEl.innerHTML = 'Something went wrong. Please try again.';
+                        newsletterForm.appendChild(errorEl);
+                        
+                        // Remove error message after 3 seconds
+                        setTimeout(() => {
+                            errorEl.remove();
+                        }, 3000);
+                    });
+                });
             }
         });
     </script>
