@@ -247,7 +247,7 @@
                         
                         <!-- Video container taking up the rest of the space -->
                         <div class="relative w-full overflow-hidden rounded-sm border border-white/30" style="height: 480px;">
-                            <video id="solutionVideo" class="absolute w-full h-full object-cover" autoplay muted playsinline preload="auto" loop>
+                            <video class="absolute w-full h-full object-cover" autoplay loop muted playsinline preload="auto">
                                 <source src="assets/howitworks.mp4" type="video/mp4">
                                 <source src="assets/howitworks.webm" type="video/webm">
                                 Your browser does not support the video tag.
@@ -325,24 +325,6 @@
                 document.querySelector(this.getAttribute('href')).scrollIntoView({
                     behavior: 'smooth'
                 });
-            });
-        });
-        
-        // Custom video control for the solution video
-        document.addEventListener('DOMContentLoaded', function() {
-            const solutionVideo = document.getElementById('solutionVideo');
-            
-            // Add error handling for video loading
-            solutionVideo.addEventListener('error', function(e) {
-                console.error('Video error:', e);
-                // Try to reload the video
-                solutionVideo.load();
-            });
-            
-            // Ensure video plays
-            solutionVideo.play().catch(function(error) {
-                console.log('Autoplay prevented:', error);
-                // Add play button or other fallback here if needed
             });
         });
         
