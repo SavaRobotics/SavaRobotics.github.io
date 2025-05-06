@@ -89,7 +89,7 @@
         <!-- Full width video background -->
         <div class="absolute inset-0 z-0">
             <div class="absolute inset-0 bg-black/60 z-10"></div> <!-- Overlay to darken video -->
-            <video class="absolute w-full h-full object-cover" autoplay loop muted playsinline preload="auto">
+            <video class="absolute w-full h-full object-cover" autoplay loop muted playsinline defaultMuted webkit-playsinline preload="metadata" id="heroVideo">
                 <source src="assets/video.mp4" type="video/mp4">
                 <source src="assets/video.webm" type="video/webm">
                 Your browser does not support the video tag.
@@ -521,6 +521,42 @@
                     });
                 });
             }
+        });
+
+        // Handle video autoplay for Safari mobile
+        document.addEventListener('DOMContentLoaded', function() {
+            const videos = document.querySelectorAll('video');
+            videos.forEach(video => {
+                // Force video play on page load
+                video.play().catch(function(error) {
+                    // Add click-to-play functionality if autoplay fails
+                    video.addEventListener('click', function() {
+                        video.play();
+                    });
+                });
+
+                // Try to play video when it becomes visible
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            video.play().catch(function(error) {
+                                console.log("Video autoplay failed:", error);
+                            });
+                        }
+                    });
+                });
+                
+                observer.observe(video);
+
+                // Handle page visibility changes
+                document.addEventListener('visibilitychange', function() {
+                    if (document.visibilityState === 'visible') {
+                        video.play().catch(function(error) {
+                            console.log("Video autoplay failed:", error);
+                        });
+                    }
+                });
+            });
         });
     </script>
 </body>
