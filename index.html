@@ -320,7 +320,7 @@
                         <!-- Video container taking up the rest of the space -->
                         <div class="relative w-full overflow-hidden rounded-sm border border-white/30" style="height: 320px;">
                             <video id="solutionVideo" class="absolute w-full h-full object-cover" autoplay muted playsinline>
-                                <source src="assets/Howitworks.mp4" type="video/mp4">
+                                <source src="assets/howitworks.mp4" type="video/mp4">
                             </video>
                             <!-- Overlay for video -->
                             <div class="absolute inset-0 bg-black/30"></div>
@@ -405,35 +405,19 @@
             const solutionVideo = document.getElementById('solutionVideo');
             let pauseTimeout;
             
-            // Get the total duration once the video is loaded
-            solutionVideo.addEventListener('loadedmetadata', function() {
-                // Assuming we want to omit the last 10 seconds
-                const videoDuration = solutionVideo.duration;
-                const endTime = videoDuration - 10; // End 10 seconds before the actual end
+            // Set up ended listener to handle pause before loop
+            solutionVideo.addEventListener('ended', function() {
+                // Pause at the end
+                solutionVideo.pause();
                 
-                // Set up timeupdate listener to handle custom loop behavior
-                solutionVideo.addEventListener('timeupdate', function() {
-                    // If video reaches 22 seconds
-                    if (solutionVideo.currentTime >= 22 && solutionVideo.currentTime < 22.1) {
-                        // Pause the video
-                        solutionVideo.pause();
-                        
-                        // Clear any existing timeout
-                        if (pauseTimeout) clearTimeout(pauseTimeout);
-                        
-                        // Resume playing after 5 seconds
-                        pauseTimeout = setTimeout(function() {
-                            solutionVideo.play();
-                        }, 5000);
-                    }
-                    
-                    // If video reaches the calculated end time (duration - 10 seconds)
-                    if (solutionVideo.currentTime >= endTime) {
-                        // Reset to beginning
-                        solutionVideo.currentTime = 0;
-                        solutionVideo.play();
-                    }
-                });
+                // Clear any existing timeout
+                if (pauseTimeout) clearTimeout(pauseTimeout);
+                
+                // Wait 4 seconds then restart
+                pauseTimeout = setTimeout(function() {
+                    solutionVideo.currentTime = 0;
+                    solutionVideo.play();
+                }, 4000);
             });
             
             // Start playing the video
