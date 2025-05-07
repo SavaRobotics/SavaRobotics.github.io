@@ -90,7 +90,7 @@
         <!-- Full width video background -->
         <div class="absolute inset-0 z-0">
             <div class="absolute inset-0 bg-black/60 z-10"></div> <!-- Overlay to darken video -->
-            <video class="absolute w-full h-full object-cover" autoplay loop muted playsinline preload="auto">
+            <video class="absolute w-full h-full object-cover" autoplay loop muted playsinline defaultMuted webkit-playsinline preload="metadata" id="heroVideo">
                 <source src="assets/video.mp4" type="video/mp4">
                 <source src="assets/video.webm" type="video/webm">
                 Your browser does not support the video tag.
@@ -113,7 +113,7 @@
                     <p class="text-s font-mono uppercase tracking-widest flex items-center">BACKED BY <img src="assets/white_yc_logo.svg" alt="Y" class="h-6 mx-3"> COMBINATOR</p>
                 </div>
                 
-                <h1 class="text-5xl md:text-7xl font-bold mb-6">
+                <h1 class="text-4xl sm:text-5xl md:text-7xl font-bold mb-6">
                     INTELLIGENT MANUFACTURING ROBOTS
                 </h1>
                 
@@ -247,14 +247,16 @@
                         <!--<h3 class="text-xl font-bold mb-8 text-center">HOW IT WORKS</h3>-->
                         
                         <!-- Video container taking up the rest of the space -->
-                        <div class="relative w-full overflow-hidden rounded-sm border border-white/30" style="height: 480px;">
-                            <video class="absolute w-full h-full object-cover" autoplay loop muted playsinline preload="auto">
-                                <source src="assets/howitworks.mp4" type="video/mp4">
-                                <source src="assets/howitworks.webm" type="video/webm">
-                                Your browser does not support the video tag.
-                            </video>
-                            <!-- Scanline effect -->
-                            <div class="absolute inset-0 scanline-effect opacity-20"></div>
+                        <div class="relative w-full overflow-hidden rounded-sm border border-white/30">
+                            <div class="aspect-video">
+                                <video class="absolute w-full h-full object-cover" autoplay loop muted playsinline preload="auto">
+                                    <source src="assets/howitworks.mp4" type="video/mp4">
+                                    <source src="assets/howitworks.webm" type="video/webm">
+                                    Your browser does not support the video tag.
+                                </video>
+                                <!-- Scanline effect -->
+                                <div class="absolute inset-0 scanline-effect opacity-20"></div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -307,7 +309,6 @@
                     <div class="flex items-center mb-6">
                         <span class="text-2xl font-posterama tracking-widest">SAVA</span>
                     </div>
-                    <p class="font-mono text-white/70 mb-6">INTELLIGENT MANUFACTURING ROBOTS</p>
                     <p class="font-mono text-white/70 mb-6">
                         <a href="mailto:founders@savarobotics.com" class="hover:text-white transition-colors">founders@savarobotics.com</a>
                     </p>
@@ -552,6 +553,42 @@
                     });
                 });
             }
+        });
+
+        // Handle video autoplay for Safari mobile
+        document.addEventListener('DOMContentLoaded', function() {
+            const videos = document.querySelectorAll('video');
+            videos.forEach(video => {
+                // Force video play on page load
+                video.play().catch(function(error) {
+                    // Add click-to-play functionality if autoplay fails
+                    video.addEventListener('click', function() {
+                        video.play();
+                    });
+                });
+
+                // Try to play video when it becomes visible
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            video.play().catch(function(error) {
+                                console.log("Video autoplay failed:", error);
+                            });
+                        }
+                    });
+                });
+                
+                observer.observe(video);
+
+                // Handle page visibility changes
+                document.addEventListener('visibilitychange', function() {
+                    if (document.visibilityState === 'visible') {
+                        video.play().catch(function(error) {
+                            console.log("Video autoplay failed:", error);
+                        });
+                    }
+                });
+            });
         });
     </script>
 </body>
