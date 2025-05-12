@@ -1,17 +1,90 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Same-Day Sheet Metal Delivery | SAVA</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet">
-</head>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>YC Sheet Metal | SAVA | AI-Powered Robotics for Manufacturing</title>
+        <script src="https://cdn.tailwindcss.com"></script>
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+        <link href="https://fonts.googleapis.com/css2?family=VT323&family=Roboto+Mono:wght@100;200;300;400;500;600;700&display=swap" rel="stylesheet">
+        <style>
+            @font-face {
+                font-family: 'Posterama';
+                src: url('assets/posterama-regular.otf') format('opentype');
+                font-weight: normal;
+                font-style: normal;
+            }
+            @font-face {
+                font-family: 'Posterama';
+                src: url('assets/posterama-bold.otf') format('opentype');
+                font-weight: bold;
+                font-style: normal;
+            }
+        </style>
+        <script>
+            tailwind.config = {
+                theme: {
+                    extend: {
+                        fontFamily: {
+                            posterama: ['Posterama', 'sans-serif'],
+                            vt323: ['VT323', 'monospace'],
+                            mono: ['Roboto Mono', 'monospace'],
+                        },
+                        animation: {
+                            'scan': 'scan 2s ease-in-out infinite',
+                            'blink': 'blink 1.5s infinite',
+                            'glitch': 'glitch 3s infinite',
+                        },
+                        keyframes: {
+                            scan: {
+                                '0%, 100%': { transform: 'translateY(0)' },
+                                '50%': { transform: 'translateY(100%)' },
+                            },
+                            blink: {
+                                '0%, 100%': { opacity: 1 },
+                                '50%': { opacity: 0 },
+                            },
+                            glitch: {
+                                '0%, 100%': { transform: 'translate(0)' },
+                                '33%': { transform: 'translate(-5px, 2px)' },
+                                '66%': { transform: 'translate(5px, -2px)' },
+                            }
+                        }
+                    }
+                }
+            }
+        </script>
+        <link rel="stylesheet" href="styles.css">
+    </head>
 <body class="bg-black text-white flex items-center justify-center min-h-screen font-mono">
-    <div class="text-center space-y-6">
+     <!-- Navigation Bar (no background color now) -->
+     <nav id="navbar" class="fixed top-0 left-0 w-full z-50 py-4 px-6">
+        <div class="container mx-auto flex justify-center md:grid md:grid-cols-3 items-center">
+            <!-- Logo (centered on mobile, left-aligned on desktop) -->
+            <a href="index.html" class="flex items-center text-white md:col-span-1">
+                <span class="text-2xl font-posterama tracking-widest">SAVA</span>
+            </a>
+            <!-- Desktop Navigation Links -->
+            <div class="hidden md:flex space-x-8 items-center justify-center md:col-span-1">
+                <a href="index.html#what-we-build" class="nav-link text-white font-mono text-sm tracking-widest hover:text-white/70 transition-all">HOME</a>
+                <a href="index.html#vision" class="nav-link text-white font-mono text-sm tracking-widest hover:text-white/70 transition-all">VISION</a>
+                <a href="index.html#problem" class="nav-link text-white font-mono text-sm tracking-widest hover:text-white/70 transition-all">PROBLEM</a>
+                <a href="index.html#solution" class="nav-link text-white font-mono text-sm tracking-widest hover:text-white/70 transition-all">SOLUTION</a>
+                <a href="index.html#reserve" class="nav-link text-white font-mono text-sm tracking-widest hover:text-white/70 transition-all">RESERVE</a>
+                <a href="contact.html" class="nav-link text-white font-mono text-sm tracking-widest hover:text-white/70 transition-all">CONTACT</a>
+            </div>
+            <!-- Empty column for desktop grid layout -->
+            <div class="hidden md:block md:col-span-1"></div>
+        </div>
+    </nav>
+    
+    <div class="text-center space-y-6 relative pt-24">
+        <p class="text-s font-mono uppercase tracking-widest flex items-center justify-center mb-4">FOR <img src="assets/white_yc_logo.svg" alt="Y" class="h-6 mx-3"> STARTUPS</p>
         <h1 class="text-3xl md:text-5xl font-bold">Same-Day Sheet Metal Delivery</h1>
-        <p class="text-lg md:text-xl">1/8" & 1/4" <b>bent</b> 5052 aluminum parts</p>
+        <p class="text-lg md:text-xl">1/8" & 1/4" <b>bent</b> 5052 aluminum parts. bay-area only</p>
         <a href="mailto:founders@savarobotics.com?subject=Sheet%20Metal%20Order" class="inline-block bg-white text-black px-8 py-4 rounded font-bold text-lg hover:bg-gray-200 transition">Email founders@savarobotics.com</a>
+        <div class="mt-2 text-lg">+1 (404) 817-6034</div>
     </div>
+
 </body>
 </html>
